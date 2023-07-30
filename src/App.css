@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'alata';
+  src: url('./styles/fonts/Alata-Regular.ttf') format('truetype');
+  font-style: normal;
+}
+#root {
+  font-family: alata;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: #ffffff;;
+}
+
