@@ -15,3 +15,6 @@ const CardsList = ({ data, handleFavoriteClick }) => {
 };
 
 export default CardsList;
+
+
+

@@ -3,6 +3,7 @@ import classes from "./LocationCard.module.css";
 
 const importSvgAsComponent = (svgFilePath) => {
   const [SvgComponent, setSvgComponent] = useState(null);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const importSvg = async () => {
@@ -11,6 +12,7 @@ const importSvgAsComponent = (svgFilePath) => {
         setSvgComponent(() => ReactComponent);
       } catch (error) {
         console.error('Error importing SVG:', error);
+        setError(true)
       }
     };
 

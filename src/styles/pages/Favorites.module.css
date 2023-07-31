@@ -1,0 +1,11 @@
+.favorites {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
