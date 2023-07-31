@@ -1,8 +1,8 @@
 import LocationCard from "./LocationCard";
-
+import classes from "./CardsList.module.css"
 const CardsList = ({ data, handleFavoriteClick }) => {
   return (
-    <div className="mt-16 prompt_layout">
+    <div className={classes.div}>
       {data.map((card) => (
         <LocationCard
           key={card.id}

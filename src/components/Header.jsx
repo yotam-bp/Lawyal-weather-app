@@ -6,28 +6,18 @@ function Header() {
   return (
     <header className={classes.header}>
       <nav>
+        <h3>
+          Weather
+          <span>app</span>
+        </h3>
         <ul>
           <li>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-              end
-            >
-              Weather
-            </NavLink>
+            <NavLink to="/">Weather</NavLink>
           </li>
           <li>
-            <NavLink
-              to="/favorites"
-              className={({ isActive }) =>
-                isActive ? classes.active : undefined
-              }
-            >
-              Favorites
-            </NavLink>
+            <NavLink to="/favorites">Favorites</NavLink>
           </li>
+          <li>Theme</li>
         </ul>
       </nav>
     </header>

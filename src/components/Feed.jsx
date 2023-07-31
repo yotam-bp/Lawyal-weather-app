@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-
 import CardList from "./CardsList";
+import classes from "./Feed.module.css";
 
 const data = [
   {
@@ -20,7 +20,27 @@ const data = [
     temperature_c: "24°C",
     humidity: "30%",
     windspeed: "16 mph",
-    weather_icon: "clear",
+    weather_icon: "partly-cloudy-day",
+    favorite: true,
+  },
+  {
+    id: "12345",
+    location: "Yorksher",
+    temperature_f: "75°F",
+    temperature_c: "24°C",
+    humidity: "30%",
+    windspeed: "16 mph",
+    weather_icon: "rainy",
+    favorite: true,
+  },
+  {
+    id: "123456",
+    location: "Yokneam",
+    temperature_f: "75°F",
+    temperature_c: "24°C",
+    humidity: "30%",
+    windspeed: "16 mph",
+    weather_icon: "sunny",
     favorite: true,
   },
 ];
@@ -52,33 +72,25 @@ const Feed = () => {
   const handleSearchChange = (e) => {
     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
-
-    // debounce method
-    setSearchTimeout(
-      setTimeout(() => {
-        const searchResult = filterCards(e.target.value);
-        setSearchedResults(searchResult);
-      }, 500)
-    );
-  };
-
-  const handleTagClick = (tagName) => {
-    setSearchText(tagName);
-
-    const searchResult = filterCards(tagName);
+    const searchResult = filterCards(e.target.value);
     setSearchedResults(searchResult);
+    // debounce method
+    // setSearchTimeout(
+    //   setTimeout(() => {
+
+    //   },500)
+    // );
   };
 
   return (
-    <section className="feed">
-      <form className="relative w-full flex-center">
+    <section className={classes.section}>
+      <form>
         <input
           type="text"
-          placeholder="Search for a tag or a username"
+          placeholder="Search for a location"
           value={searchText}
           onChange={handleSearchChange}
           required
-          className="search_input peer"
         />
       </form>
 

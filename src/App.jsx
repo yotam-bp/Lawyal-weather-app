@@ -2,16 +2,22 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Favorites from "./pages/Favorites";
 import WeatherDetails from "./pages/WeatherDetails";
+import RootLayout from "./pages/RootLayout";
 
 const router = createBrowserRouter([
-  { path: "/", element: <WeatherDetails /> },
-  { path: "/favorites", element: <Favorites /> },
+  {
+    path: "/",
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <WeatherDetails /> },
+      { path: "/favorites", element: <Favorites /> },
+    ],
+  },
 ]);
 
 function App() {
   return (
     <>
-      <h1>weather app</h1>
       <RouterProvider router={router} />
     </>
   );
