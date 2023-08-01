@@ -26,5 +26,7 @@ body {
   min-height: 100vh;
   margin: 0 auto;
 }
-
+ p{
+  margin: 0 ;
+ }
 

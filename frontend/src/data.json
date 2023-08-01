@@ -6,7 +6,7 @@
           "humidity": "50%",
           "windspeed": "11 mph",
           "weather_icon": "partly-cloudy-day",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "New York City",
@@ -15,7 +15,7 @@
           "humidity": "65%",
           "windspeed": "10 mph",
           "weather_icon": "partly-cloudy-night",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Los Angeles",
@@ -24,7 +24,7 @@
           "humidity": "70%",
           "windspeed": "8 mph",
           "weather_icon": "sunny",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "London",
@@ -33,7 +33,7 @@
           "humidity": "55%",
           "windspeed": "12 mph",
           "weather_icon": "partly-cloudy-day",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Paris",
@@ -42,7 +42,7 @@
           "humidity": "62%",
           "windspeed": "7 mph",
           "weather_icon": "partly-cloudy-day",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Tokyo",
@@ -51,7 +51,7 @@
           "humidity": "80%",
           "windspeed": "5 mph",
           "weather_icon": "sunny",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Sydney",
@@ -60,7 +60,7 @@
           "humidity": "50%",
           "windspeed": "15 mph",
           "weather_icon": "partly-cloudy-day",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Toronto",
@@ -69,7 +69,7 @@
           "humidity": "60%",
           "windspeed": "9 mph",
           "weather_icon": "partly-cloudy-day",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Mumbai",
@@ -78,7 +78,7 @@
           "humidity": "75%",
           "windspeed": "11 mph",
           "weather_icon": "partly-cloudy-day",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Cairo",
@@ -87,7 +87,7 @@
           "humidity": "40%",
           "windspeed": "13 mph",
           "weather_icon": "sunny",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Rio de Janeiro",
@@ -96,7 +96,7 @@
           "humidity": "70%",
           "windspeed": "8 mph",
           "weather_icon": "partly-cloudy-day",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Moscow",
@@ -105,7 +105,7 @@
           "humidity": "45%",
           "windspeed": "6 mph",
           "weather_icon": "rain",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Berlin",
@@ -114,7 +114,7 @@
           "humidity": "55%",
           "windspeed": "10 mph",
           "weather_icon": "cloudy",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Beijing",
@@ -123,7 +123,7 @@
           "humidity": "65%",
           "windspeed": "7 mph",
           "weather_icon": "sunny",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "São Paulo",
@@ -132,7 +132,7 @@
           "humidity": "75%",
           "windspeed": "9 mph",
           "weather_icon": "partly-cloudy-day",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Istanbul",
@@ -141,7 +141,7 @@
           "humidity": "50%",
           "windspeed": "12 mph",
           "weather_icon": "sunny",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Lagos",
@@ -150,7 +150,7 @@
           "humidity": "80%",
           "windspeed": "15 mph",
           "weather_icon": "partly-cloudy-day",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Mexico City",
@@ -159,7 +159,7 @@
           "humidity": "60%",
           "windspeed": "11 mph",
           "weather_icon": "cloudy",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "New Delhi",
@@ -168,7 +168,7 @@
           "humidity": "55%",
           "windspeed": "10 mph",
           "weather_icon": "partly-cloudy-day",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Bangkok",
@@ -177,7 +177,7 @@
           "humidity": "75%",
           "windspeed": "13 mph",
           "weather_icon": "rain",
-          "favorite": "false"
+          "favorite": false
         },
         {
           "location": "Johannesburg",
@@ -186,7 +186,7 @@
           "humidity": "40%",
           "windspeed": "8 mph",
           "weather_icon": "partly-cloudy-night",
-          "favorite": "false"
+          "favorite": false
         }
       ]
       

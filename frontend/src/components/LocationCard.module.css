@@ -1,4 +1,4 @@
-.section {
+.card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,6 +13,11 @@
   animation: fadeIn 1s;
 }
 
+.card:hover{
+  transform: scale(1.02);
+  transition-duration: 0.1s;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -22,7 +27,7 @@
   }
 }
 
-.section li {
+.card li {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,7 +35,7 @@
   font-size: 0.8rem;
 }
 
-.section span {
+.card span {
   color: #2a56c9;
 }
 
@@ -47,6 +52,16 @@ button {
 
 button:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.05);
   transition-duration: 0.5s;
+}
+.favorite {
+  display: flex;
+
+}
+.card:hover + .favorite{
+}
+
+.card h2 {
+  margin: 0 0 0.5rem 0;
 }

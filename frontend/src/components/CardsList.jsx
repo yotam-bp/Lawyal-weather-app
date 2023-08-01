@@ -5,7 +5,7 @@ const CardsList = ({ data, handleFavoriteClick }) => {
     <div className={classes.div}>
       {data.map((card) => (
         <LocationCard
-          key={card.id}
+          key={card._id}
           location={card}
           handleFavoriteClick={handleFavoriteClick}
         />
