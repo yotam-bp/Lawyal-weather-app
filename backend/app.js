@@ -9,8 +9,6 @@ const favoritesRouter = require('./routes/favoritesRoutes');
 const weatherRouter = require('./routes/weatherRouter');
 const cors = require('cors')
 const app = express();
-const Weather = require('./models/weatherModel');
-
 
 // 1) GLOBAL MIDDLEWARES
 app.use(cors())
@@ -35,27 +33,6 @@ app.use(xss());
 
 // Serving static files
 app.use(express.static(`${__dirname}/public`));
-
-
-// app.get('/', async (req, res) => {
-//   const doc = await Weather.find()
-//   console.log('hi', doc);
-
-//   res.status(200).json({
-//     status: 'success',
-//     data: doc
-    
-
-//   });
-// });
-
-// app.post("/", async (req, res) => {
-//   const weatherData = await Weather.create(req.body) 
-//   console.log("Received weather data:", weatherData);
-//   // You can add your custom logic here to handle the favorite data
-//   // For this example, we'll just respond with a success message
-//   res.json({ message: "Weather data marked as favorite successfully!" });
-// });
 
 app.use('/', weatherRouter);
 app.use('/api/v1/favorites', favoritesRouter);

@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import Feed from "../components/Feed";
 
 const WeatherDetails = () => {

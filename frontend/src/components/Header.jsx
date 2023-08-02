@@ -1,15 +1,17 @@
 import { NavLink } from "react-router-dom";
 
-import classes from "./Header.module.css";
+import classes from "../styles/components/Header.module.css";
 
 function Header() {
   return (
     <header className={classes.header}>
       <nav>
-        <h3>
+      <NavLink to="/">
+        <h2>
           Weather
           <span>app</span>
-        </h3>
+        </h2>
+        </NavLink>
         <ul>
           <li>
             <NavLink to="/">Weather</NavLink>

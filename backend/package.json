@@ -1,5 +1,5 @@
 {
-  "name": "aprendev",
+  "name": "weather-app",
   "version": "1.0.0",
   "description": "Learning platform for Ti-space",
   "main": "index.js",
@@ -10,15 +10,12 @@
     "debug": "ndb server.js"
   },
   "repository": {
-    "type": "git",
-    "url": "git+https://gitlab.com/dev3022/aprendev.git"
+    "type": "git"
   },
   "author": "Yotam Ben Porat",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/dev3022/aprendev/issues"
   },
-  "homepage": "https://gitlab.com/dev3022/aprendev#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",

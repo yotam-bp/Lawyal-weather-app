@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CardList from "./CardsList";
-import classes from "./Feed.module.css";
+import classes from "../styles/components/Feed.module.css";
+import RainAnimation from "./RainAnimation";
 
 const Feed = () => {
   const [allLocation, setAllLocation] = useState([]);
@@ -15,12 +16,11 @@ const Feed = () => {
   const fetchLocations = async () => {
     try {
       const response = await fetch("http://127.0.0.1:5000/");
-      const {data} = await response.json();
+      const { data } = await response.json();
       setAllLocation(data);
       setDefaultLocation(data.slice(0, 1));
       setLoading(false);
       console.log(data);
-      
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -37,20 +37,16 @@ const Feed = () => {
   };
 
   const handleSearchChange = (e) => {
-    clearTimeout(searchTimeout);
     setSearchText(e.target.value);
     const searchResult = filterCards(e.target.value);
     setSearchedResults(searchResult);
-    // debounce method
-    // setSearchTimeout(
-    //   setTimeout(() => {
-
-    //   },500)
-    // );
   };
+  if (loading) return;
 
   return (
     <section className={classes.section}>
+      <RainAnimation />
+      <h3>Weather</h3>
       <form>
         <input
           type="text"

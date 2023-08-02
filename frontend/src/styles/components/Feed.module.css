@@ -1,12 +1,11 @@
-.section {
-}
+
 
 .section input {
   font-family: alata;
   font-size: 0.8rem;
   border: solid 1px #2a56c9;
   border-radius: 16px;
-  margin: 1rem 0 1.5rem 0;
+  margin-bottom: 1rem;
   text-align: center;
   padding: 0.2rem;
   color: #2a56c9;

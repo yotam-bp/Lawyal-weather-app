@@ -1,5 +1,5 @@
 import LocationCard from "./LocationCard";
-import classes from "./CardsList.module.css"
+import classes from "../styles/components/CardsList.module.css"
 const CardsList = ({ data, handleFavoriteClick }) => {
   return (
     <div className={classes.div}>
