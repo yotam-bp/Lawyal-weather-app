@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-width: 20%;
-  max-width: 25%;
+  min-width: 250px;
   background-color: #ffffff;
   color: #2a56c9;
   padding: 1rem;
@@ -62,9 +61,70 @@ padding: 0;
 
 }
 
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2a56c9;
+  border-radius: 34px;
+  -webkit-transition: .4s;
+  transition: .4s;
+  z-index: 1;
+}
+
+.slider:before {
+  position: absolute;
+  content: "c";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  border-radius: 50%;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:after {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  right: 4px;
+  bottom: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 12px;
+  pointer-events: none; /* This line ensures the "C" element is not clickable */
+}
+
+input:checked + .slider:before {
+  content: "f";
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
 .favorite {
   display: flex;
-
 }
 .card:hover + .favorite{
 }

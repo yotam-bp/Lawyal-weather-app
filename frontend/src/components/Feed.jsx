@@ -1,35 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CardList from "./CardsList";
-import classes from "../styles/components/Feed.module.css";
 import RainAnimation from "./RainAnimation";
+import useFetchLocations from "../hooks/useFetchLocations";
+import Loading from "./Loading";
+import ErrorComponent from "./ErrorComponent";
+import classes from "../styles/components/Feed.module.css";
 
 const Feed = () => {
-  const [allLocation, setAllLocation] = useState([]);
-  const [defaultLocation, setDefaultLocation] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  // Search states
   const [searchText, setSearchText] = useState("");
-  const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
 
-  const fetchLocations = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:5000/");
-      const { data } = await response.json();
-      setAllLocation(data);
-      setDefaultLocation(data.slice(0, 1));
-      setLoading(false);
-      console.log(data);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchLocations();
-  }, []);
+  const { locations: allLocation, loading,error } = useFetchLocations("http://127.0.0.1:5000/");
 
   const filterCards = (searchtext) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
@@ -41,7 +22,9 @@ const Feed = () => {
     const searchResult = filterCards(e.target.value);
     setSearchedResults(searchResult);
   };
-  if (loading) return;
+
+  if (loading) return <Loading/>
+  if (error) return <ErrorComponent/>
 
   return (
     <section className={classes.section}>
@@ -60,7 +43,7 @@ const Feed = () => {
       {searchText ? (
         <CardList data={searchedResults} />
       ) : (
-        <CardList data={defaultLocation} />
+        <CardList data={allLocation.slice(0, 1)} />
       )}
     </section>
   );

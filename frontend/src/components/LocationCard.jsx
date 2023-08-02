@@ -3,6 +3,7 @@ import classes from "../styles/components/LocationCard.module.css";
 import { ReactComponent as Favorite } from "../assets/icons/favorite.svg";
 import { ReactComponent as FavoriteFill } from "../assets/icons/favorite-fill.svg";
 import { ReactComponent as Broken } from "../assets/icons/broken-image.svg";
+import ErrorComponent from "./ErrorComponent";
 
 const importSvgAsComponent = (svgFilePath) => {
   const [SvgComponent, setSvgComponent] = useState(null);
@@ -38,8 +39,6 @@ const LocationCard = ({ location }) => {
 
   const handleToggleFavorite = async () => {
     try {
-      // Simulate an async PATCH request to update the favorite status on the server
-      // Replace this with your actual PATCH request code
       const response = await fetch(
         `http://127.0.0.1:5000/api/v1/favorites/${location._id}`,
         {
@@ -52,14 +51,13 @@ const LocationCard = ({ location }) => {
       );
 
       if (!response.ok) {
-        // Handle the case where the server returns an error
         throw new Error("Failed to toggle favorite status");
       }
 
       setIsFavorite((prevIsFavorite) => !prevIsFavorite);
     } catch (error) {
-      // Handle any errors that occur during the PATCH request or JSON parsing
       console.error("Error toggling favorite:", error);
+      return <ErrorComponent text={"cant get favorites"}/>
     }
   };
 
@@ -67,12 +65,11 @@ const LocationCard = ({ location }) => {
     <>
       <section className={classes.card}>
         <span className={classes.favorite}>
-          <button className={classes.addbutton } onClick={handleToggleFavorite}>
+          <button className={classes.addbutton} onClick={handleToggleFavorite}>
             {isFavorite ? (
-              <FavoriteFill fill="#2f2f2f" /> 
+              <FavoriteFill fill="#2f2f2f" />
             ) : (
               <Favorite fill="#2f2f2f" />
-
             )}
           </button>
         </span>
@@ -80,7 +77,14 @@ const LocationCard = ({ location }) => {
         {svgIcon ? <span>{svgIcon}</span> : <Broken />}
         <ul>
           <li>
-            <button onClick={handleChooseUnit}>change unit</button>
+            <label
+              className={`${classes.switch} ${
+                chooseUnit ? classes.celsius : classes.fahrenheit
+              }`}
+            >
+              <input type="checkbox" onClick={handleChooseUnit} />
+              <span className={classes.slider}></span>
+            </label>
             {chooseUnit ? (
               <p>{location.temperature_c}</p>
             ) : (

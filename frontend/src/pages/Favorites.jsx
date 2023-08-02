@@ -1,27 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import LocationCard from "../components/LocationCard";
+import useFetchLocations from "../hooks/useFetchLocations";
+import Loading from "../components/Loading";
+import ErrorComponent from "../components/ErrorComponent";
 import classes from "../styles/pages/Favorites.module.css";
 
 const Favorites = () => {
-  const [allLocations, setAllLocations] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [loading, setLoading] = useState(true);
 
-  const fetchLocations = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:5000/api/v1/favorites");
-      const { data } = await response.json();
-      setAllLocations(data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchLocations();
-  }, []);
+  const {
+    locations: allLocations,
+    loading,
+    error,
+  } = useFetchLocations("http://127.0.0.1:5000/api/v1/favorites");
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => (prevPage + 1) % allLocations.length);
@@ -37,12 +28,18 @@ const Favorites = () => {
     setCurrentPage(pageIndex);
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  if (loading) return <Loading />;
+  if (error)
+    return (
+      <ErrorComponent
+        text={"We have a problem. Please refresh the page or try again later."}
+      />
+    );
 
   if (!allLocations) {
-    return <div>No favorite locations found.</div>;
+    return <ErrorComponent
+        text={"No favorite locations found. please add some!"}
+      />
   } else {
     const currentLocation = allLocations[currentPage];
     return (
