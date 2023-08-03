@@ -34,7 +34,7 @@ app.use(xss());
 // Serving static files
 app.use(express.static(`${__dirname}/public`));
 
-app.use('/', weatherRouter);
+app.use('/api/v1/weather', weatherRouter);
 app.use('/api/v1/favorites', favoritesRouter);
 
 app.all('*', (req, res, next) => {

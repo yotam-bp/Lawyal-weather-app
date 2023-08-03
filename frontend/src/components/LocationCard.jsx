@@ -1,35 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import classes from "../styles/components/LocationCard.module.css";
 import { ReactComponent as Favorite } from "../assets/icons/favorite.svg";
 import { ReactComponent as FavoriteFill } from "../assets/icons/favorite-fill.svg";
-import { ReactComponent as Broken } from "../assets/icons/broken-image.svg";
 import ErrorComponent from "./ErrorComponent";
-
-const importSvgAsComponent = (svgFilePath) => {
-  const [SvgComponent, setSvgComponent] = useState(null);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const importSvg = async () => {
-      try {
-        const { ReactComponent } = await import(svgFilePath);
-        setSvgComponent(() => ReactComponent);
-      } catch (error) {
-        console.error("Error importing SVG:", error);
-        setError(true);
-      }
-    };
-
-    importSvg();
-  }, [svgFilePath]);
-
-  return SvgComponent ? <SvgComponent fill="#2f2f2f" /> : null;
-};
+import ImportSvg from "./ImportSvg";
 
 const LocationCard = ({ location }) => {
-  const svgName = `../assets/icons/${location.weather_icon}.svg`;
-  const svgIcon = importSvgAsComponent(svgName);
-
   const [chooseUnit, setChooseUnit] = useState(true);
   const [isFavorite, setIsFavorite] = useState(location.favorite);
 
@@ -57,7 +33,7 @@ const LocationCard = ({ location }) => {
       setIsFavorite((prevIsFavorite) => !prevIsFavorite);
     } catch (error) {
       console.error("Error toggling favorite:", error);
-      return <ErrorComponent text={"cant get favorites"}/>
+      return <ErrorComponent text={"cant get favorites"} />;
     }
   };
 
@@ -74,7 +50,7 @@ const LocationCard = ({ location }) => {
           </button>
         </span>
         <h2>{location.location}</h2>
-        {svgIcon ? <span>{svgIcon}</span> : <Broken />}
+        <ImportSvg weatherIcon={location.weather_icon} />
         <ul>
           <li>
             <label

@@ -1,5 +1,6 @@
-import { useState } from "react";
-import CardList from "./CardsList";
+import { useState, usePara } from "react";
+import { useParams } from "react-router-dom";
+import WeatherList from "./WeatherList";
 import RainAnimation from "./RainAnimation";
 import useFetchLocations from "../hooks/useFetchLocations";
 import Loading from "./Loading";
@@ -10,11 +11,15 @@ const Feed = () => {
   const [searchText, setSearchText] = useState("");
   const [searchedResults, setSearchedResults] = useState([]);
 
-  const { locations: allLocation, loading,error } = useFetchLocations("http://127.0.0.1:5000/");
+  const { locationId } = useParams();
+  const url = locationId
+    ? `http://127.0.0.1:5000/api/v1/weather/${locationId}`
+    : `http://127.0.0.1:5000/api/v1/weather`;
+  const { locations: allLocations, loading, error } = useFetchLocations(url);
 
   const filterCards = (searchtext) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
-    return allLocation.filter((item) => regex.test(item.location));
+    return allLocations.filter((item) => regex.test(item.location));
   };
 
   const handleSearchChange = (e) => {
@@ -23,12 +28,11 @@ const Feed = () => {
     setSearchedResults(searchResult);
   };
 
-  if (loading) return <Loading/>
-  if (error) return <ErrorComponent/>
+  if (loading) return <Loading />;
+  if (error) return <ErrorComponent />;
 
   return (
     <section className={classes.section}>
-      <RainAnimation />
       <h3>Weather</h3>
       <form>
         <input
@@ -41,9 +45,12 @@ const Feed = () => {
       </form>
 
       {searchText ? (
-        <CardList data={searchedResults} />
+        <WeatherList data={searchedResults} />
       ) : (
-        <CardList data={allLocation.slice(0, 1)} />
+        <>
+          <WeatherList data={allLocations.slice(0, 1)} />
+          <RainAnimation />
+        </>
       )}
     </section>
   );

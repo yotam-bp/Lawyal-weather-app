@@ -10,6 +10,11 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       { index: true, element: <WeatherDetails /> },
+      {
+        path: "/weather",
+        element: <WeatherDetails />,
+        children: [{ path: "/weather/:locationId", id: "location-detail" }],
+      },
       { path: "/favorites", element: <Favorites /> },
     ],
   },

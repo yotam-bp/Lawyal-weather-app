@@ -1,9 +1,9 @@
 import { useState } from "react";
-import LocationCard from "../components/LocationCard";
 import useFetchLocations from "../hooks/useFetchLocations";
 import Loading from "../components/Loading";
 import ErrorComponent from "../components/ErrorComponent";
 import classes from "../styles/pages/Favorites.module.css";
+import FavoriteCard from "../components/FavoriteCard";
 
 const Favorites = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -29,6 +29,7 @@ const Favorites = () => {
   };
 
   if (loading) return <Loading />;
+
   if (error)
     return (
       <ErrorComponent
@@ -37,40 +38,16 @@ const Favorites = () => {
     );
 
   if (!allLocations) {
-    return <ErrorComponent
-        text={"No favorite locations found. please add some!"}
-      />
+    return (
+      <ErrorComponent text={"No favorite locations found. please add some!"} />
+    );
   } else {
-    const currentLocation = allLocations[currentPage];
     return (
       <section className={classes.favorites}>
         <h3>Favorites</h3>
-        <div className={classes.card}>
-          <LocationCard
-            location={currentLocation}
-            isFavorite={currentLocation.favorite}
-            onToggleFavorite={(locationId, isFavorite) =>
-              handleToggleFavorite(locationId, isFavorite)
-            }
-          />
-        </div>
-        <div>
-          <button style={{ color: "white" }} onClick={handlePrevPage}>
-            {"<"}
-          </button>
-          <button style={{ color: "white" }} onClick={handleNextPage}>
-            {">"}
-          </button>
-        </div>
-        <div style={{ color: "white" }}>
-          {allLocations.map((_, index) => (
-            <span
-              key={index}
-              onClick={() => handlePageClick(index)}
-              style={{ cursor: "pointer", margin: "5px" }}
-            >
-              {currentPage === index ? "●" : "○"}
-            </span>
+        <div className={classes.rowsContainer}>
+          {allLocations.map((row) => (
+            <FavoriteCard key={row._id} location={row} />
           ))}
         </div>
       </section>
