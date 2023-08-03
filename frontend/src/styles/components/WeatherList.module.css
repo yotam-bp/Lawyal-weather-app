@@ -1,6 +1,6 @@
 
 .div{
-  display: flex; /* Use flexbox for the wrapping container */
+  display: flex; 
   align-items: center;
   justify-content: center;
   overflow-x:scroll;
@@ -9,22 +9,22 @@
 }
 
 .div::-webkit-scrollbar {
-  width: 10px; /* Set the width of the scrollbar */
-  height: 10px;
+  width: 5px;
+  height: 5px;
 }
 
 .div::-webkit-scrollbar-thumb {
-  background-color: #ffffff; /* Set the color of the scrollbar thumb (the draggable part) */
+  background-color: #ffffff;
+  border-radius: 10px; 
 }
 
 .div::-webkit-scrollbar-thumb:hover {
-  background-color: #e6e6e6; /* Set the color of the scrollbar thumb on hover */
+  background-color: #e6e6e6;
 }
 
-.container::-webkit-scrollbar-track {
-  background-color: #f5f5f5;
+.div::-webkit-scrollbar-track {
   border-radius: 4px;
-  margin-right: 2px; /* Adjust this value to control the offset */
+  margin-right: 2px;
 }
 
 

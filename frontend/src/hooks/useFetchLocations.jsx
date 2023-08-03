@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 
-const useFetchLocations = (url, locationId = null) => { 
+const useFetchLocations = (url) => { 
   const [locations, setLocations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [singleLocation, setSingleLocation] = useState(null); 
 
   const fetchLocations = async () => {
     try {
@@ -13,10 +12,6 @@ const useFetchLocations = (url, locationId = null) => {
       setLocations(data);
       setLoading(false);
 
-      if (locationId) {
-        const foundLocation = data.find(location => location.id === locationId);
-        setSingleLocation(foundLocation);
-      }
     } catch (error) {
       console.log(error);
       setError(true)
@@ -26,9 +21,9 @@ const useFetchLocations = (url, locationId = null) => {
 
   useEffect(() => {
     fetchLocations();
-  }, [url, locationId]);
+  }, [url]);
 
-  return { locations: locationId ? singleLocation : locations, loading, error };
+  return { locations: locations, loading, error };
 };
 
 export default useFetchLocations;

@@ -7,7 +7,6 @@ exports.updateOne = Model =>
       new: true,
       runValidators: true
     });
-    console.log(req.params.id, req.body,);
 
     if (!doc) {
       return next(new AppError('No document found with that ID', 404));
@@ -37,10 +36,9 @@ exports.updateOne = Model =>
 
 
 exports.getAll = (Model, filter) =>
-  catchAsync(async (req, res, next) => {
+catchAsync(async (req, res, next) => {
 
     const doc = await Model.find(filter)
-    console.log(req.params);
 
     if (doc.length === 0) {
       return next(new AppError('Could not found what you are looking for', 404));

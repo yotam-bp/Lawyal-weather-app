@@ -10,28 +10,21 @@ const weatherRouter = require('./routes/weatherRouter');
 const cors = require('cors')
 const app = express();
 
-// 1) GLOBAL MIDDLEWARES
 app.use(cors())
 app.options('*', cors())
 
-// Set security HTTP headers
 app.use(helmet());
 
-// Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-// Body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
 
-// Data sanitization against NoSQL query injection
 app.use(mongoSanitize());
 
-// Data sanitization against XSS
 app.use(xss());
 
-// Serving static files
 app.use(express.static(`${__dirname}/public`));
 
 app.use('/api/v1/weather', weatherRouter);

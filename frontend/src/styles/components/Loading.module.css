@@ -7,7 +7,7 @@
 
 .loader {
   border: 1rem solid rgba(255, 255, 255, 0.3);
-  border-top: 1rem solid #ffffff; /* Change the color to white (#ffffff) */
+  border-top: 1rem solid #ffffff; 
   border-radius: 50%;
   width: 5rem;
   height: 5rem;

@@ -1,9 +1,9 @@
 import { useState } from "react";
+import ErrorComponent from "./ErrorComponent";
+import ImportSvg from "./ImportSvg";
 import classes from "../styles/components/LocationCard.module.css";
 import { ReactComponent as Favorite } from "../assets/icons/favorite.svg";
 import { ReactComponent as FavoriteFill } from "../assets/icons/favorite-fill.svg";
-import ErrorComponent from "./ErrorComponent";
-import ImportSvg from "./ImportSvg";
 
 const LocationCard = ({ location }) => {
   const [chooseUnit, setChooseUnit] = useState(true);

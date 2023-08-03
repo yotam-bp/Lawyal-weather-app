@@ -126,8 +126,6 @@ input:checked + .slider:before {
 .favorite {
   display: flex;
 }
-.card:hover + .favorite{
-}
 
 .card h2 {
   margin: 0 0 0.5rem 0;

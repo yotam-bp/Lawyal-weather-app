@@ -1,4 +1,4 @@
-import classes from '../styles/components/Loading.module.css'; // Import the CSS Modules file for styling
+import classes from '../styles/components/Loading.module.css'; 
 
 const Loading = () => {
   return (

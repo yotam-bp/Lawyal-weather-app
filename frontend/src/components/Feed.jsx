@@ -1,4 +1,4 @@
-import { useState, usePara } from "react";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import WeatherList from "./WeatherList";
 import RainAnimation from "./RainAnimation";
@@ -29,7 +29,9 @@ const Feed = () => {
   };
 
   if (loading) return <Loading />;
-  if (error) return <ErrorComponent />;
+  if (error) return <ErrorComponent text={'OH! something went wrong...'} />;
+
+  const defaultLocation = allLocations.slice(0, 1);
 
   return (
     <section className={classes.section}>
@@ -48,7 +50,7 @@ const Feed = () => {
         <WeatherList data={searchedResults} />
       ) : (
         <>
-          <WeatherList data={allLocations.slice(0, 1)} />
+          <WeatherList data={defaultLocation} />
           <RainAnimation />
         </>
       )}

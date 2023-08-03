@@ -1,10 +1,8 @@
 const express = require('express');
-const Weather = require('../models/weatherModel');
-const handlerFactory = require('../controllers/handlerFactory');
-
+const weatherController = require('../controllers/weatherController');
 const router = express.Router({ mergeParams: true });
 
-router.route('/').get(handlerFactory.getAll(Weather))
-router.route('/:id').get(handlerFactory.getOne(Weather))
+router.route('/').get(weatherController.getLocationsWeather)
+router.route('/:id').get(weatherController.getSingleWeather)
 
 module.exports = router;
