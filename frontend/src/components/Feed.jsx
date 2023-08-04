@@ -12,10 +12,15 @@ const Feed = () => {
   const [searchedResults, setSearchedResults] = useState([]);
 
   const { locationId } = useParams();
-  const url = locationId
-    ? `http://127.0.0.1:5000/api/v1/weather/${locationId}`
-    : `http://127.0.0.1:5000/api/v1/weather`;
-  const { locations: allLocations, loading, error } = useFetchLocations(url);
+
+  const apiUrl =
+    import.meta.env.VITE_REACT_APP_ENV === "production"
+      ? import.meta.env.VITE_REACT_APP_API_URL_PROD +
+      `/weather${locationId ? `/${locationId}` : ""}`
+      : import.meta.env.VITE_REACT_APP_API_URL +
+      `/weather${locationId ? `/${locationId}` : ""}`
+
+  const { locations: allLocations, loading, error } = useFetchLocations(apiUrl);
 
   const filterCards = (searchtext) => {
     const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
@@ -29,7 +34,7 @@ const Feed = () => {
   };
 
   if (loading) return <Loading />;
-  if (error) return <ErrorComponent text={'OH! something went wrong...'} />;
+  if (error) return <ErrorComponent text={"OH! something went wrong..."} />;
 
   const defaultLocation = allLocations.slice(0, 1);
 

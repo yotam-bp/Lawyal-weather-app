@@ -9,6 +9,11 @@ const LocationCard = ({ location }) => {
   const [chooseUnit, setChooseUnit] = useState(true);
   const [isFavorite, setIsFavorite] = useState(location.favorite);
 
+  const apiUrl =
+    import.meta.env.VITE_REACT_APP_ENV === "production"
+      ? import.meta.env.VITE_REACT_APP_API_URL_PROD
+      : import.meta.env.VITE_REACT_APP_API_URL;
+
   const handleChooseUnit = () => {
     setChooseUnit((chooseUnit) => !chooseUnit);
   };
@@ -16,7 +21,7 @@ const LocationCard = ({ location }) => {
   const handleToggleFavorite = async () => {
     try {
       const response = await fetch(
-        `http://127.0.0.1:5000/api/v1/favorites/${location._id}`,
+        `${apiUrl}/favorites/${location._id}`,
         {
           method: "PATCH",
           headers: {

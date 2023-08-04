@@ -1,32 +1,28 @@
-import { useState, useEffect } from "react";
+import React from "react";
 import { ReactComponent as Broken } from "../assets/icons/broken-image.svg";
+import { ReactComponent as Cloudy } from "../assets/icons/cloudy.svg";
+import { ReactComponent as FavoriteFill } from "../assets/icons/favorite-fill.svg";
+import { ReactComponent as Favorite } from "../assets/icons/favorite.svg";
+import { ReactComponent as PartlyCloudyDay } from "../assets/icons/partly-cloudy-day.svg";
+import { ReactComponent as PartlyCloudyNight } from "../assets/icons/partly-cloudy-night.svg";
+import { ReactComponent as Rainy } from "../assets/icons/rainy.svg";
+import { ReactComponent as Sunny } from "../assets/icons/sunny.svg";
 
-const importSvgAsComponent = (svgFilePath) => {
-  const [SvgComponent, setSvgComponent] = useState(null);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const importSvg = async () => {
-      try {
-        const { ReactComponent } = await import(svgFilePath);
-        setSvgComponent(() => ReactComponent);
-      } catch (error) {
-        console.error("Error importing SVG:", error);
-        setError(true);
-      }
-    };
-
-    importSvg();
-  }, [svgFilePath]);
-
-  return SvgComponent ? <SvgComponent fill="#2f2f2f" /> : <Broken />;
+const locationCardIcons = {
+  "broken-image": Broken,
+  "cloudy": Cloudy,
+  "favorite-fill": FavoriteFill,
+  "favorite": Favorite,
+  "partly-cloudy-day": PartlyCloudyDay,
+  "partly-cloudy-night": PartlyCloudyNight,
+  "rainy": Rainy,
+  "sunny": Sunny,
 };
 
 const LocationCardSvg = ({ weatherIcon }) => {
-  const svgName = `../assets/icons/${weatherIcon}.svg`;
-  const svgIcon = importSvgAsComponent(svgName);
+  const SvgComponent = locationCardIcons[weatherIcon];
 
-  return <span>{svgIcon}</span>;
+  return <span>{SvgComponent ? <SvgComponent fill="#2f2f2f" /> : <Broken />}</span>;
 };
 
 export default LocationCardSvg;

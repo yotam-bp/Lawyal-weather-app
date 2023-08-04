@@ -5,12 +5,12 @@ import FavoriteCard from "../components/FavoriteCard";
 import classes from "../styles/pages/Favorites.module.css";
 
 const Favorites = () => {
+  const apiUrl =
+    import.meta.env.VITE_REACT_APP_ENV === "production"
+      ? import.meta.env.VITE_REACT_APP_API_URL_PROD + "/favorites"
+      : import.meta.env.VITE_REACT_APP_API_URL + "/favorites";
 
-  const {
-    locations: allLocations,
-    loading,
-    error,
-  } = useFetchLocations("http://127.0.0.1:5000/api/v1/favorites");
+  const { locations: allLocations, loading, error } = useFetchLocations(apiUrl);
 
   if (loading) return <Loading />;
 
